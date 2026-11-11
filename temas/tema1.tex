@@ -1,0 +1,548 @@
+\chapter*{Tema 1. Conceptos fundamentales}
+\setcounter{chapter}{1}
+\addcontentsline{toc}{chapter}{Tema 1. Conceptos fundamentales}
+% ------------------------------------------------------------
+%  Problema 1.1
+% ------------------------------------------------------------
+\begin{enunciado}
+Un haz de átomos de plata se crea calentando un vapor en un horno a $1000^\circ\text{C}$ y seleccionando átomos con una velocidad cercana a la media de la distribución térmica. El haz se desplaza a través de un campo magnético de un metro de longitud con un gradiente vertical de $10\text{ T/m}$, e incide sobre una pantalla situada a un metro de distancia del final del imán. Asumiendo que el átomo de plata tiene espín $\frac{1}{2}$ con un momento magnético de un magnetón de Bohr, halle la distancia de separación en milímetros de los dos estados en la pantalla.
+\end{enunciado}
+
+\begin{resolucion}
+\textbf{1. Fuerza sobre el átomo de plata en el campo magnético}
+
+El átomo de plata en su estado fundamental posee un electrón de valencia no apareado ($5s^1$), por lo que su momento magnético dipolar es debido únicamente al espín del electrón, con magnitud $|\mu_z| = \mu_B \approx 9.274 \times 10^{-24}\text{ J/T}$ (un magnetón de Bohr).
+
+En presencia de un campo magnético inhomogeneous con gradiente vertical $\pdv{B_z}{z}$, la fuerza neta sobre el átomo en la dirección $z$ es:
+\[
+F_z = -\pdv{U}{z} = \pdv{(\vect{\mu} \cdot \vect{B})}{z} = \mu_z \pdv{B_z}{z} = \pm \mu_B \pdv{B_z}{z}.
+\]
+Sustituyendo los valores dados:
+\[
+F_z = \pm (9.274 \times 10^{-24}\text{ J/T}) \times (10\text{ T/m}) = \pm 9.274 \times 10^{-23}\text{ N}.
+\]
+
+La masa de un átomo de plata ($^{107.87}\text{Ag}$) es $m \approx 107.87 \times 1.6605 \times 10^{-27}\text{ kg} = 1.791 \times 10^{-25}\text{ kg}$. Por tanto, la aceleración vertical en la región del imán vale:
+\[
+a_z = \frac{F_z}{m} = \frac{9.274 \times 10^{-23}\text{ N}}{1.791 \times 10^{-25}\text{ kg}} \approx 517.8\text{ m/s}^2.
+\]
+
+\textbf{2. Cinemática de la trayectoria y deflexión total}
+
+Sea $v$ la velocidad longitudinal de los átomos, $L_1 = 1\text{ m}$ la longitud del imán y $L_2 = 1\text{ m}$ la distancia libre hasta la pantalla.
+
+\begin{itemize}
+  \item \textbf{Dentro del imán ($0 \le x \le L_1$):} El tiempo de tránsito es $t_1 = L_1 / v$. La deflexión vertical acumulada al salir del imán es:
+  \[
+  z_1 = \frac{1}{2} a_z t_1^2 = \frac{1}{2} a_z \left(\frac{L_1}{v}\right)^2,
+  \]
+  y la velocidad vertical adquirida es $v_z = a_z t_1 = a_z \frac{L_1}{v}$.
+
+  \item \textbf{Región libre ($L_1 < x \le L_1 + L_2$):} El tiempo de tránsito es $t_2 = L_2 / v$. La deflexión adicional por deriva inercial es:
+  \[
+  z_2 = v_z t_2 = a_z \frac{L_1 L_2}{v^2}.
+  \]
+\end{itemize}
+
+La deflexión vertical total sobre la pantalla para una de las componentes de espín es:
+\[
+z_{\text{total}} = z_1 + z_2 = \frac{a_z L_1}{v^2} \left( \frac{1}{2} L_1 + L_2 \right).
+\]
+Para $L_1 = 1\text{ m}$ y $L_2 = 1\text{ m}$:
+\[
+z_{\text{total}} = \frac{3}{2} \frac{a_z}{v^2}.
+\]
+
+La separación total $d$ entre los dos trazos en la pantalla (correspondientes a los componentes $s_z = +\hbar/2$ y $s_z = -\hbar/2$) es el doble de la deflexión individual:
+\[
+d = 2 z_{\text{total}} = \frac{3 a_z}{v^2} = \frac{3 \mu_B \pdv{B_z}{z}}{m v^2}.
+\]
+
+\textbf{3. Evaluación de la velocidad térmica y resultado numérico}
+
+La temperatura del horno es $T = 1000^\circ\text{C} = 1273.15\text{ K}$. Si tomamos como velocidad característica la velocidad cuadrática media de la distribución térmica ($v^2 = v_{\text{rms}}^2 = \frac{3 k_B T}{m}$):
+\[
+m v^2 = 3 k_B T \implies d = \frac{3 \mu_B \pdv{B_z}{z}}{3 k_B T} = \frac{\mu_B \pdv{B_z}{z}}{k_B T}.
+\]
+
+Sustituyendo los valores de las constantes universales:
+\[
+d = \frac{(9.274 \times 10^{-24}\text{ J/T}) \times (10\text{ T/m})}{(1.3806 \times 10^{-23}\text{ J/K}) \times (1273.15\text{ K})} = \frac{9.274 \times 10^{-23}}{1.7577 \times 10^{-20}}\text{ m} \approx 5.28 \times 10^{-3}\text{ m} = 5.28\text{ mm}.
+\]
+
+\begin{nota}
+Si en lugar de la velocidad cuadrática media en 3D ($v_{\text{rms}} \approx 542.6\text{ m/s}$) se emplea la velocidad promedio de los átomos que componen el haz efundido a la salida del horno ($\bar{v}_{\text{haz}} = \sqrt{\frac{9\pi k_B T}{8m}} \approx 588.9\text{ m/s}$), se obtiene una separación de $d \approx 4.48\text{ mm}$.
+\end{nota}
+\end{resolucion}
+% ------------------------------------------------------------
+%  Problema 1.2
+% ------------------------------------------------------------
+\begin{enunciado}
+Demuestre la siguiente identidad operacional:
+\[
+\comm{AB}{CD} = -AC \acomm{D}{B} + A \acomm{C}{B} D - C \acomm{D}{A} B + \acomm{C}{A} DB.
+\]
+\end{enunciado}
+
+\begin{resolucion}
+Recordemos las definiciones básicas del conmutador y del anticonmutador para dos operadores cualesquiera:
+\[
+\comm{X}{Y} = XY - YX, \qquad \acomm{X}{Y} = XY + YX.
+\]
+
+\textbf{Método 1: Construcción directa}
+
+Partimos del miembro izquierdo expandiendo la definición del conmutador:
+\[
+\comm{AB}{CD} = ABCD - CDAB.
+\]
+Sumamos y restamos los términos $ACBD$ y $CADB$ para agrupar los operadores centrales en forma de anticonmutadores:
+\begin{align*}
+\comm{AB}{CD} &= ABCD + ACBD - ACBD - (CDAB + CADB - CADB) \\
+&= A(BC + CB)D - C(DA + AD)B - ACBD + CADB \\
+&= A\acomm{C}{B}D - C\acomm{D}{A}B - ACBD + CADB.
+\end{align*}
+
+A continuación, sumamos y restamos el término $ACDB$ a los dos últimos sumandos:
+\begin{align*}
+-ACBD + CADB &= -ACBD - ACDB + ACDB + CADB \\
+&= -AC(BD + DB) + (AC + CA)DB \\
+&= -AC\acomm{D}{B} + \acomm{C}{A}DB.
+\end{align*}
+
+Sustituyendo esta última igualdad en la expresión previa, reordenamos los términos y obtenemos la identidad requerida:
+\[
+\comm{AB}{CD} = -AC \acomm{D}{B} + A \acomm{C}{B} D - C \acomm{D}{A} B + \acomm{C}{A} DB.
+\]
+
+\textbf{Método 2: Verificación por desarrollo del lado derecho}
+
+Desarrollando los anticonmutadores del miembro derecho:
+\begin{align*}
+\text{RHS} &= -AC(DB + BD) + A(CB + BC)D - C(DA + AD)B + (CA + AC)DB \\
+&= -ACDB - ACBD + ACBD + ABCD - CDAB - CADB + CADB + ACDB.
+\end{align*}
+
+Cancelando las parejas de términos con signos opuestos ($-ACDB$ con $+ACDB$, $-ACBD$ con $+ACBD$, y $-CADB$ con $+CADB$), resulta:
+\[
+\text{RHS} = ABCD - CDAB = \comm{AB}{CD}.
+\]
+\end{resolucion}
+
+% ------------------------------------------------------------
+%  Problema 1.3
+% ------------------------------------------------------------
+\begin{enunciado}
+Para el estado de espín $\frac{1}{2}$ dado por $\ket{S_x; +}$, evalúe ambos lados de la desigualdad de incertidumbre:
+\[
+\ev{(\Delta A)^2} \ev{(\Delta B)^2} \ge \frac{1}{4} \abs{\ev{\comm{A}{B}}}^2
+\]
+para los operadores $A = S_x$ y $B = S_y$, y demuestre que la desigualdad se satisface. Repita el procedimiento para los operadores $A = S_z$ y $B = S_y$.
+\end{enunciado}
+% ------------------------------------------------------------
+%  Problema 1.4
+% ------------------------------------------------------------
+\begin{enunciado}
+Suponga que una matriz de $2 \times 2$, $X$ (no necesariamente hermítica ni unitaria), se expresa de la forma:
+\[
+X = a_0 + \vect{\sigma} \cdot \vect{a},
+\]
+donde las matrices $\vect{\sigma} = (\sigma_1, \sigma_2, \sigma_3)$ son las matrices de Pauli y $a_0, a_1, a_2, a_3$ son escalares.
+\begin{enumerate}
+  \item ¿Cómo se relacionan los coeficientes $a_0$ y $a_k$ ($k=1,2,3$) con $\Tr(X)$ y $\Tr(\sigma_k X)$?
+  \item Obtenga $a_0$ y $a_k$ en términos de los elementos de matriz $X_{ij}$.
+\end{enumerate}
+\end{enunciado}
+
+\begin{resolucion}
+Las matrices de Pauli $\vect{\sigma} = (\sigma_1, \sigma_2, \sigma_3)$ cumplen las propiedades algebraicas fundamentales:
+\[
+\Tr(\sigma_k) = 0, \qquad \sigma_k \sigma_j = \delta_{kj} I + \ii \epsilon_{kjl} \sigma_l,
+\]
+donde $I$ es la matriz identidad de $2 \times 2$. Tomando la traza en la relación de producto, resulta $\Tr(\sigma_k \sigma_j) = 2 \delta_{kj}$.
+
+Expresando la matriz $X$ de forma explícita en la base del álgebra de Pauli:
+\[
+X = a_0 I + \vect{\sigma} \cdot \vect{a} = a_0 I + \sum_{j=1}^3 a_j \sigma_j.
+\]
+
+\begin{enumerate}
+  \item \textbf{Relación con las trazas:}
+
+  Tomando la traza a ambos lados de la descomposición de $X$:
+  \[
+  \Tr(X) = a_0 \Tr(I) + \sum_{j=1}^3 a_j \Tr(\sigma_j) = 2 a_0 + 0 \implies a_0 = \frac{1}{2} \Tr(X).
+  \]
+
+  Multiplicando por la matriz $\sigma_k$ y tomando de nuevo la traza:
+  \[
+  \Tr(\sigma_k X) = a_0 \Tr(\sigma_k) + \sum_{j=1}^3 a_j \Tr(\sigma_k \sigma_j) = 0 + \sum_{j=1}^3 a_j (2\delta_{kj}) = 2 a_k \implies a_k = \frac{1}{2} \Tr(\sigma_k X).
+  \]
+
+  Es decir, todos los elementos diagonales de la matriz $\sigma_kX$ son $a_k$.
+  \item \textbf{Expresión en términos de las componentes $X_{ij}$:}
+
+  Escribiendo la matriz $X$ en términos de sus elementos:
+  \[
+  X = \begin{pmatrix} X_{11} & X_{12} \\ X_{21} & X_{22} \end{pmatrix}.
+  \]
+
+  Calculando la traza directa y los productos con las matrices de Pauli:
+  \begin{itemize}
+    \item Coeficiente $a_0$:
+    \[
+    a_0 = \frac{1}{2} \Tr(X) = \frac{1}{2} (X_{11} + X_{22}).
+    \]
+    
+    \item Coeficiente $a_1$:
+    \begin{align*}
+        a_1 & = \frac{1}{2} \Tr(\sigma_1 X) = \frac{1}{2} \Tr \left[ \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} X_{11} & X_{12} \\ X_{21} & X_{22} \end{pmatrix} \right] = \frac{1}{2} \Tr \begin{pmatrix} X_{21} & X_{22} \\ X_{11} & X_{12} \end{pmatrix} = \\[12pt]
+        & = \frac{1}{2} (X_{12} + X_{21}).
+    \end{align*}
+
+    \item Coeficiente $a_2$:
+    \begin{align*}
+    a_2 & = \frac{1}{2} \Tr(\sigma_2 X) = \frac{1}{2} \Tr \left[ \begin{pmatrix} 0 & -\ii \\ \ii & 0 \end{pmatrix} \begin{pmatrix} X_{11} & X_{12} \\ X_{21} & X_{22} \end{pmatrix} \right] = \frac{1}{2} \Tr \begin{pmatrix} -\ii X_{21} & -\ii X_{22} \\ \ii X_{11} & \ii X_{12} \end{pmatrix} =\\[12pt]
+    & = \frac{\ii}{2} (X_{12} - X_{21}).
+    \end{align*}
+
+    \item Coeficiente $a_3$:
+    \begin{align*}
+    a_3 & = \frac{1}{2} \Tr(\sigma_3 X) = \frac{1}{2} \Tr \left[ \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} X_{11} & X_{12} \\ X_{21} & X_{22} \end{pmatrix} \right] = \frac{1}{2} \Tr \begin{pmatrix} X_{11} & X_{12} \\ -X_{21} & -X_{22} \end{pmatrix} \\[12pt]
+    & = \frac{1}{2} (X_{11} - X_{22}).
+    \end{align*}
+  \end{itemize}
+\end{enumerate}
+\end{resolucion}
+% ------------------------------------------------------------
+%  Problema 1.5
+% ------------------------------------------------------------
+\begin{enunciado}
+Demuestre que el determinante de una matriz de $2 \times 2$ dada por $\vect{\sigma} \cdot \vect{a}$ es invariante ante la transformación:
+\[
+\vect{\sigma} \cdot \vect{a} \longrightarrow \vect{\sigma} \cdot \vect{a}' \equiv \ee^{\frac{\ii \vect{\sigma} \cdot \hat{\vect{n}} \phi}{2}} (\vect{\sigma} \cdot \vect{a}) \, \ee^{-\frac{\ii \vect{\sigma} \cdot \hat{\vect{n}} \phi}{2}}.
+\]
+Encuentre las componentes $a_k'$ en términos de $a_k$ cuando el vector unitario $\hat{\vect{n}}$ se orienta a lo largo del eje positivo $z$, e interprete físicamente su resultado.
+\end{enunciado}
+
+\begin{resolucion}
+Definimos el operador unitario $U$ que genera la transformación:
+\[
+U = \ee^{\frac{\ii \vect{\sigma} \cdot \hat{\vect{n}} \phi}{2}}, \qquad U^\dagger = U^{-1} = \ee^{-\frac{\ii \vect{\sigma} \cdot \hat{\vect{n}} \phi}{2}}.
+\]
+La transformación sobre la matriz $M \equiv \vect{\sigma} \cdot \vect{a}$ adopta la forma $M' \equiv \vect{\sigma} \cdot \vect{a}' = U M U^{-1}$.
+
+\textbf{1. Invarianza del determinante}
+
+Aprovechando la propiedad multiplicativa del determinante ($\det(AB) = \det(A)\det(B)$):
+\begin{align*}
+    \det(\vect{\sigma} \cdot \vect{a}') & = \det(U M U^{-1}) = \det(U) \det(M) \det(U^{-1}) = \det(U U^{-1}) \det(M) \\[12pt]
+    & = \det(I) \det(M) = \det(\vect{\sigma} \cdot \vect{a})
+\end{align*}
+Por lo tanto, el determinante es estrictamente invariante.
+
+Dado que la matriz $M = \vect{\sigma} \cdot \vect{a}$ admite la representación explícita:
+\[
+\vect{\sigma} \cdot \vect{a} = a_x \sigma_x + a_y \sigma_y + a_z \sigma_z = \begin{pmatrix} a_z & a_x - \ii a_y \\ a_x + \ii a_y & -a_z \end{pmatrix},
+\]
+su determinante vale $\det(\vect{\sigma} \cdot \vect{a}) = -a_z^2 - (a_x^2 + a_y^2) = -\abs{\vect{a}}^2$. La invarianza del determinante implica la invarianza de la norma al cuadrado del vector $\vect{a}$, es decir, $\abs{\vect{a}'}^2 = \abs{\vect{a}}^2$.
+
+\textbf{2. Transformación para $\hat{\vect{n}} = \hat{\vect{z}}$}
+
+Si el vector unitario apunta en la dirección $z$, $\hat{\vect{n}} = (0,0,1)$, se tiene $\vect{\sigma} \cdot \hat{\vect{n}} = \sigma_z$. La matriz $U$ resulta ser diagonal:
+\[
+U = \ee^{\frac{\ii \sigma_z \phi}{2}} = \begin{pmatrix} \ee^{\frac{\ii\phi}{2}} & 0 \\ 0 & \ee^{-\frac{\ii\phi}{2}} \end{pmatrix}, \qquad U^\dagger = \begin{pmatrix} \ee^{-\frac{\ii\phi}{2}} & 0 \\ 0 & \ee^{\frac{\ii\phi}{2}} \end{pmatrix}.
+\]
+
+Calculamos la matriz transformada $M' = U (\vect{\sigma} \cdot \vect{a}) U^\dagger$:
+\begin{align*}
+M' &= \begin{pmatrix} \ee^{\frac{\ii\phi}{2}} & 0 \\ 0 & \ee^{-\frac{\ii\phi}{2}} \end{pmatrix} \begin{pmatrix} a_z & a_x - \ii a_y \\ a_x + \ii a_y & -a_z \end{pmatrix} \begin{pmatrix} \ee^{-\frac{\ii\phi}{2}} & 0 \\ 0 & \ee^{\frac{\ii\phi}{2}} \end{pmatrix} \\
+&= \begin{pmatrix} a_z \ee^{\frac{\ii\phi}{2}} & (a_x - \ii a_y)\ee^{\frac{\ii\phi}{2}} \\ (a_x + \ii a_y)\ee^{-\frac{\ii\phi}{2}} & -a_z \ee^{-\frac{\ii\phi}{2}} \end{pmatrix} \begin{pmatrix} \ee^{-\frac{\ii\phi}{2}} & 0 \\ 0 & \ee^{\frac{\ii\phi}{2}} \end{pmatrix} \\
+&= \begin{pmatrix} a_z & (a_x - \ii a_y)\ee^{\ii\phi} \\ (a_x + \ii a_y)\ee^{-\ii\phi} & -a_z \end{pmatrix}.
+\end{align*}
+
+Igualando esta expresión término a término con la forma general
+\[
+M' = \begin{pmatrix} a_z' & a_x' - \ii a_y' \\ a_x' + \ii a_y' & -a_z' \end{pmatrix}
+\]
+Tenemos que:
+\begin{enumerate}
+  \item $a_z' = a_z$.
+  \item Para las componentes $x$ e $y$, usamos la fórmula de Euler $\ee^{\ii\phi} = \cos\phi + \ii \sin\phi$:
+  \[
+  a_x' - \ii a_y' = (a_x - \ii a_y)(\cos\phi + \ii \sin\phi) = (a_x \cos\phi + a_y \sin\phi) - \ii (-a_x \sin\phi + a_y \cos\phi).
+  \]
+\end{enumerate}
+
+Separando la parte real y la parte imaginaria se obtienen las componentes transformadas:
+\[
+a_x' = a_x \cos\phi + a_y \sin\phi, \qquad a_y' = -a_x \sin\phi + a_y \cos\phi, \qquad a_z' = a_z.
+\]
+
+En representación matricial tridimensional:
+\[
+\begin{pmatrix} a_x' \\ a_y' \\ a_z' \end{pmatrix} = \begin{pmatrix} \cos\phi & \sin\phi & 0 \\ -\sin\phi & \cos\phi & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} a_x \\ a_y \\ a_z \end{pmatrix}.
+\]
+
+\textbf{3. Interpretación física}
+
+La transformación representa una \textbf{rotación física (activa) del vector $\vect{a}$ en un ángulo $-\phi$} alrededor del eje $z$ (o, equivalentemente, una rotación pasiva de los ejes del sistema de referencia en un ángulo $+\phi$). 
+
+De manera general, la operación unitaria $U = \ee^{\frac{\ii \vect{\sigma} \cdot \hat{\vect{n}} \phi}{2}}$ induce una rotación espacial del vector tridimensional $\vect{a}$ alrededor del eje definido por $\hat{\vect{n}}$ en un ángulo $-\phi$. Puesto que las rotaciones espaciales conservan la longitud de los vectores, la invarianza del determinante $\det(\vect{\sigma} \cdot \vect{a}) = -\abs{\vect{a}}^2$ refleja de forma directa la conservación de la norma del vector rotado $\vect{a}'$.
+\end{resolucion}
+
+% ------------------------------------------------------------
+%  Problema 1.6
+% ------------------------------------------------------------
+\begin{enunciado}
+Utilizando las reglas del álgebra de bras y kets, pruebe o evalúe las siguientes expresiones:
+\begin{enumerate}
+  \item $\Tr(XY) = \Tr(YX)$, donde $X$ e $Y$ son operadores.
+  \item $(XY)^\dagger = Y^\dagger X^\dagger$, donde $X$ e $Y$ son operadores.
+  \item $\ee^{\ii f(A)} = ?$ expresado en representación ket-bra (proyectores), donde $A$ es un operador hermítico con autovalores conocidos.
+  \item $\sum_{a'} \psi_{a'}^*(x') \psi_{a'}(x'')$, donde $\psi_{a'}(x') = \braket{x'}{a'}$.
+\end{enumerate}
+\end{enunciado}
+
+\begin{resolucion}
+\begin{enumerate}
+  \item \textbf{Propiedad cíclica de la traza:}
+
+  La traza de un operador $O$ se define como la suma de sus elementos diagonales en una base ortonormal completa $\{\ket{a}\}$:
+  \[
+  \Tr(O) = \sum_a \mel{a}{O}{a}.
+  \]
+  Insertando la relación de completitud $I = \sum_b \ket{b}\bra{b}$ para otra base completa $\{\ket{b}\}$:
+  \[
+  \Tr(XY) = \sum_a \mel{a}{X I Y}{a} = \sum_a \sum_b \mel{a}{X}{b} \mel{b}{Y}{a}.
+  \]
+  Puesto que $\mel{a}{X}{b}$ y $\mel{b}{Y}{a}$ son números complejos (escalares), conmutan entre sí. Reordenando los factores y conmutando el orden de las sumatorias finitas:
+  
+  \[
+  \Tr(XY) = \sum_b \sum_a \mel{b}{Y}{a} \mel{a}{X}{b} = \sum_b \mel{b}{Y \left( \sum_a \ket{a}\bra{a} \right) X}{b} = \sum_b \mel{b}{YX}{b} = \Tr(YX).
+  \]
+
+  \item \textbf{Adjunto del producto de operadores:}
+
+  Consideremos el efecto de aplicar la secuencia de operadores $XY$ sobre un ket arbitrario $\ket{\alpha}$:
+  \[
+  \ket{\psi} = (XY)\ket{\alpha} = X(Y\ket{\alpha}).
+  \]
+  Definimos el ket intermedio $\ket{\beta} \equiv Y\ket{\alpha}$. Por la correspondencia dual del espacio de Hilbert, el bra asociado a $\ket{\beta}$ es:
+  \[
+  \bra{\beta} = \bra{\alpha} Y^\dagger.
+  \]
+  Aplicando ahora el operador $X$ al estado $\ket{\beta}$, tenemos $\ket{\psi} = X\ket{\beta}$. Su bra dual correspondiente es:
+  \[
+  \bra{\psi} = \bra{\beta} X^\dagger = (\bra{\alpha} Y^\dagger) X^\dagger = \bra{\alpha} Y^\dagger X^\dagger.
+  \]
+  Por otro lado, por definición de operador adjunto de $(XY)$, el bra dual del ket $\ket{\psi} = (XY)\ket{\alpha}$ es $\bra{\psi} = \bra{\alpha} (XY)^\dagger$. Igualando ambas expresiones para un bra $\bra{\alpha}$ arbitrario:
+  \[
+  \bra{\alpha} (XY)^\dagger = \bra{\alpha} Y^\dagger X^\dagger \implies (XY)^\dagger = Y^\dagger X^\dagger.
+  \]
+
+  \item \textbf{Operador función de una observable en representación ket-bra:}
+
+  Dado que $A$ es un operador hermítico, admite descomposición espectral en términos de sus autovalores $a'$ y del conjunto completo de sus autovectores ortonormales $\{\ket{a'}\}$:
+  \[
+  A = \sum_{a'} a' \ket{a'}\bra{a'}.
+  \]
+  Para cualquier función analítica $f(A)$, el operador actúa sobre cada autovector evaluando la función sobre el autovalor correspondiente, $f(A)\ket{a'} = f(a')\ket{a'}$. Multiplicando la función del operador por la identidad $I = \sum_{a'} \ket{a'}\bra{a'}$:
+  \[
+  \ee^{\ii f(A)} = \ee^{\ii f(A)} I = \ee^{\ii f(A)} \sum_{a'} \ket{a'}\bra{a'} = \sum_{a'} \ee^{\ii f(A)} \ket{a'}\bra{a'} = \sum_{a'} \ee^{\ii f(a')} \ket{a'}\bra{a'}.
+  \]
+
+  \item \textbf{Suma de funciones de onda y relación de completitud:}
+
+  Expresamos el conjugado complejo de la función de onda $\psi_{a'}^*(x')$ en términos del bra de posición:
+  \[
+  \psi_{a'}^*(x') = \braket{x'}{a'}^* = \braket{a'}{x'}.
+  \]
+  Sustituyendo esta relación y $\psi_{a'}(x'') = \braket{x''}{a'}$ en la sumatoria:
+  \[
+  \sum_{a'} \psi_{a'}^*(x') \psi_{a'}(x'') = \sum_{a'} \braket{a'}{x'} \braket{x''}{a'} = \sum_{a'} \braket{x''}{a'} \braket{a'}{x'}.
+  \]
+  Agrupando el producto ket-bra del medio y aplicando la relación de completitud $\sum_{a'} \ket{a'}\bra{a'} = I$:
+  \[
+  \sum_{a'} \psi_{a'}^*(x') \psi_{a'}(x'') = \mel{x''}{\left( \sum_{a'} \ket{a'}\bra{a'} \right)}{x'} = \braket{x''}{x'} = \delta(x'' - x').
+  \]
+\end{enumerate}
+\end{resolucion}
+
+% ------------------------------------------------------------
+%  Problema 1.7
+% ------------------------------------------------------------
+\begin{enunciado}
+\begin{enumerate}
+  \item Considere dos kets $\ket{\alpha}$ y $\ket{\beta}$. Suponga que las amplitudes $\braket{a'}{\alpha}, \braket{a''}{\alpha}, \dots$ y $\braket{a'}{\beta}, \braket{a''}{\beta}, \dots$ son conocidas, donde $\{\ket{a'}\}$ forma un conjunto completo de kets de base. Encuentre la representación matricial del operador $\ket{\alpha}\bra{\beta}$ en esa base.
+  \item Considere ahora un sistema de espín $\frac{1}{2}$ y sean $\ket{\alpha}$ y $\ket{\beta}$ los estados $\ket{S_z; +}$ y $\ket{S_x; +}$, respectivamente. Escriba explícitamente la matriz cuadrada que corresponde al operador $\ket{\alpha}\bra{\beta}$ en la base usual (base donde $S_z$ es diagonal).
+\end{enumerate}
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.8
+% ------------------------------------------------------------
+\begin{enunciado}
+Suponga que $\ket{i}$ y $\ket{j}$ son autovectores de un operador hermítico $A$. ¿Bajo qué condición se puede concluir que la superposición $\ket{i} + \ket{j}$ es también un autovector de $A$? Justifique su respuesta.
+\end{enunciado}
+
+\begin{resolucion}
+Sean $a_i$ y $a_j$ los autovalores asociados a los autovectores $\ket{i}$ y $\ket{j}$ del operador hermítico $A$:
+\[
+A\ket{i} = a_i\ket{i}, \qquad A\ket{j} = a_j\ket{j}.
+\]
+
+Por la propiedad de linealidad del operador $A$, su acción sobre la superposición $\ket{i} + \ket{j}$ es:
+\[
+A(\ket{i} + \ket{j}) = A\ket{i} + A\ket{j} = a_i\ket{i} + a_j\ket{j}.
+\]
+
+Para que el estado $\ket{i} + \ket{j}$ sea un autovector de $A$, debe existir un escalar $\lambda$ tal que:
+\[
+A(\ket{i} + \ket{j}) = \lambda(\ket{i} + \ket{j}).
+\]
+Igualando ambas expresiones:
+\[
+a_i\ket{i} + a_j\ket{j} = \lambda\ket{i} + \lambda\ket{j} \implies (a_i - \lambda)\ket{i} + (a_j - \lambda)\ket{j} = 0.
+\]
+
+Analizamos las condiciones sobre esta relación:
+
+\begin{enumerate}
+  \item \textbf{Si $a_i \neq a_j$ (autovalores distintos):} Los autovectores correspondientes a autovalores distintos de un operador hermítico son ortogonales entre sí ($\braket{i}{j} = 0$) y, por lo tanto, linealmente independientes. Para que una combinación lineal de vectores independientes sea nula, sus coeficientes deben anularse individualmente:
+  \[
+  a_i - \lambda = 0 \quad \text{y} \quad a_j - \lambda = 0 \implies a_i = \lambda = a_j,
+  \]
+  lo que contradice la suposición inicial de que los autovalores son distintos. Por lo tanto, en el caso no degenerado, la superposición \textbf{no} es un autovector.
+
+  \item \textbf{Si $a_i = a_j \equiv \lambda$ (autovalores degenerados):} Sustituyendo directamente:
+  \[
+  A(\ket{i} + \ket{j}) = \lambda\ket{i} + \lambda\ket{j} = \lambda(\ket{i} + \ket{j}).
+  \]
+  La superposición es manifiestamente un autovector de $A$ con el autovalor común $\lambda$.
+\end{enumerate}
+
+\textbf{Conclusión:} La superposición $\ket{i} + \ket{j}$ es un autovector del operador $A$ \textbf{si y solo si} los estados $\ket{i}$ y $\ket{j}$ corresponden al mismo autovalor, es decir, si los autovalores son \textbf{degenerados} ($a_i = a_j$).
+\end{resolucion}
+% ------------------------------------------------------------
+%  Problema 1.9
+% ------------------------------------------------------------
+\begin{enunciado}
+Considere un espacio de kets generado por los autovectores $\{\ket{a'}\}$ de un operador hermítico $A$, asumiendo que no existe degeneración.
+\begin{enumerate}
+  \item Demuestre que el operador dado por:
+  \[
+  \prod_{a'} (A - a')
+  \]
+  es el operador nulo.
+  \item ¿Cuál es el significado del operador:
+  \[
+  \prod_{a'' \neq a'} \frac{A - a''}{a' - a''}?
+  \]
+  \item Ilustre los apartados (a) y (b) tomando $A = S_z$ para un sistema de espín $\frac{1}{2}$.
+\end{enumerate}
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.10
+% ------------------------------------------------------------
+\begin{enunciado}
+Utilizando la ortonormalidad de la base $\{\ket{+}, \ket{-}\}$, demuestre que:
+\[
+\comm{S_i}{S_j} = \ii \epsilon_{ijk} \hbar S_k \quad \text{y} \quad \acomm{S_i}{S_j} = \frac{\hbar^2}{2} \delta_{ij},
+\]
+donde las componentes del operador de espín vienen dadas en representación ket-bra por:
+\[
+S_x = \frac{\hbar}{2} (\ket{+}\bra{-} + \ket{-}\bra{+}), \quad
+S_y = \frac{\ii\hbar}{2} (-\ket{+}\bra{-} + \ket{-}\bra{+}), \quad
+S_z = \frac{\hbar}{2} (\ket{+}\bra{+} - \ket{-}\bra{-}).
+\]
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.11
+% ------------------------------------------------------------
+\begin{enunciado}
+Construya el estado $\ket{\vect{S} \cdot \hat{\vect{n}}; +}$ tal que satisfaga la ecuación de autovalores:
+\[
+\vect{S} \cdot \hat{\vect{n}} \, \ket{\vect{S} \cdot \hat{\vect{n}}; +} = \frac{\hbar}{2} \, \ket{\vect{S} \cdot \hat{\vect{n}}; +},
+\]
+donde el vector unitario $\hat{\vect{n}}$ viene determinado por los ángulos polar y azimutal $\beta$ y $\alpha$. Exprese su resultado como una combinación lineal de los estados propios de $S_z$, $\ket{+}$ y $\ket{-}$.
+
+\begin{nota}
+La solución es $\cos(\beta/2)\ket{+} + \sin(\beta/2)\ee^{\ii\alpha}\ket{-}$. Sin embargo, no se limite a comprobar que satisface la ecuación anterior; resuelva el problema de autovalores desde cero y sin hacer uso de los operadores de rotación.
+\end{nota}
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.12
+% ------------------------------------------------------------
+\begin{enunciado}
+El operador hamiltoniano para un sistema de dos estados se escribe como:
+\[
+H = a \bigl( \ket{1}\bra{1} - \ket{2}\bra{2} + \ket{1}\bra{2} + \ket{2}\bra{1} \bigr),
+\]
+donde $a$ es una constante con dimensiones de energía. Halle los autovalores de la energía y los autovectores correspondientes expresados como combinaciones lineales de la base $\{\ket{1}, \ket{2}\}$.
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.13
+% ------------------------------------------------------------
+\begin{enunciado}
+Un sistema de dos estados está descrito por el hamiltoniano:
+\[
+H = H_{11} \ket{1}\bra{1} + H_{22} \ket{2}\bra{2} + H_{12} \bigl( \ket{1}\bra{2} + \ket{2}\bra{1} \bigr),
+\]
+donde $H_{11}$, $H_{22}$ y $H_{12}$ son números reales con dimensiones de energía, y $\{\ket{1}, \ket{2}\}$ son los autovectores de algún observable ($\neq H$). Halle los autovectores y los autovalores correspondientes de la energía. Verifique que su respuesta es consistente en el límite $H_{12} = 0$.
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.14
+% ------------------------------------------------------------
+\begin{enunciado}
+Se sabe que un sistema de espín $\frac{1}{2}$ se encuentra en un estado propio de $\vect{S} \cdot \hat{\vect{n}}$ con autovalor $\hbar/2$, donde $\hat{\vect{n}}$ es un vector unitario contenido en el plano $xz$ que forma un ángulo $\gamma$ con el eje positivo $z$.
+\begin{enumerate}
+  \item Si se mide $S_x$, ¿cuál es la probabilidad de obtener el resultado $+\hbar/2$?
+  \item Evalúe la dispersión en $S_x$, esto es, $\ev{(S_x - \ev{S_x})^2}$.
+\end{enumerate}
+(Compruebe sus resultados para los casos particulares $\gamma = 0$, $\pi/2$ y $\pi$).
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.15
+% ------------------------------------------------------------
+\begin{enunciado}
+Un haz de átomos de espín $\frac{1}{2}$ atraviesa consecutivamente una serie de aparatos de medición de tipo Stern-Gerlach según el siguiente esquema:
+\begin{enumerate}
+  \item El primer aparato selecciona átomos con $s_z = \hbar/2$ y descarta aquellos con $s_z = -\hbar/2$.
+  \item El segundo aparato selecciona átomos con $s_n = \hbar/2$ y descarta los de $s_n = -\hbar/2$, donde $s_n$ es el autovalor del operador $\vect{S} \cdot \hat{\vect{n}}$, estando $\hat{\vect{n}}$ en el plano $xz$ formando un ángulo $\beta$ con el eje $z$.
+  \item El tercer aparato selecciona átomos con $s_z = -\hbar/2$ y descarta aquellos con $s_z = \hbar/2$.
+\end{enumerate}
+¿Cuál es la intensidad del haz final con $s_z = -\hbar/2$ si la intensidad del haz emergente del primer aparato se normaliza a la unidad? ¿Cómo se debe orientar el segundo aparato si se desea maximizar la intensidad del haz final?
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.16
+% ------------------------------------------------------------
+\begin{enunciado}
+Cierto observable en mecánica cuántica tiene la siguiente representación matricial de $3 \times 3$:
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix}
+\]
+\begin{enumerate}
+  \item Halle los autovectores normalizados de este observable y sus correspondientes autovalores. ¿Existe alguna degeneración?
+  \item Proporcione un ejemplo físico donde esta matriz resulte relevante.
+\end{enumerate}
+\end{enunciado}
+
+% ------------------------------------------------------------
+%  Problema 1.17
+% ------------------------------------------------------------
+\begin{enunciado}
+Sean $A$ y $B$ dos observables. Suponga que sus autovectores simultáneos $\{\ket{a', b'}\}$ forman un conjunto ortonormal completo. ¿Es posible concluir siempre que $\comm{A}{B} = 0$? Si la respuesta es afirmativa, demuéstrelo. Si es negativa, proporcione un contraejemplo.
+\end{enunciado}

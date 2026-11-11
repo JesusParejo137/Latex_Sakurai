@@ -1,0 +1,177 @@
+% ============================================================
+%  preamble.tex
+% ============================================================
+
+
+% ------------------------------------------------------------
+%  1. Codificación, idioma y tipografía
+% ------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+
+\usepackage{amsmath,amssymb}
+\usepackage[sc]{mathpazo}          % Palatino (texto y matemáticas)
+\linespread{1.05}                  % Recomendado para Palatino
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{bm}
+
+% Nombres en español: «Tema» en lugar de «Capítulo», «Índice» en lugar de «Índice general»
+\addto\captionsspanish{%
+  \renewcommand{\chaptername}{Tema}%
+  \renewcommand{\contentsname}{Índice}%
+}
+
+
+% ------------------------------------------------------------
+%  2. Geometría de página (preparada para imprimir a doble cara)
+% ------------------------------------------------------------
+\usepackage[a4paper,twoside,
+            inner=3cm,outer=2.5cm,   % el margen interior es mayor (encuadernación)
+            top=3cm,bottom=3cm,
+            headheight=15pt,headsep=0.8cm]{geometry}
+
+
+% ------------------------------------------------------------
+%  3. Encabezados y pies de página
+%     - Páginas impares (derecha):  sección ........ nº de página
+%     - Páginas pares (izquierda):  nº de página ........ tema
+%     - Línea horizontal bajo el encabezado, pie de página vacío
+% ------------------------------------------------------------
+\usepackage{fancyhdr}
+\usepackage{emptypage}             % Sin encabezado en las páginas en blanco
+
+\pagestyle{fancy}
+\fancyhf{}                         % Limpia encabezado y pie
+\fancyhead[LE,RO]{\small\thepage}
+\fancyhead[RE]{\small\itshape\nouppercase{\leftmark}}
+\fancyhead[LO]{\small\itshape\nouppercase{\rightmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Primera página de cada tema (y del índice): solo el número de página, sin línea
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[LE,RO]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
+% Qué se escribe en el encabezado
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\chaptername\ \thechapter.\ #1}{\chaptername\ \thechapter.\ #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+
+% ------------------------------------------------------------
+%  4. Títulos de tema y de sección
+% ------------------------------------------------------------
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\raggedright}
+  {\large\scshape\chaptername\ \thechapter}
+  {1ex}
+  {\huge\bfseries}
+  [\vspace{1.5ex}\titlerule]
+\titlespacing*{\chapter}{0pt}{0pt}{4ex}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{0.8em}{}
+\titlespacing*{\section}{0pt}{4ex plus 1ex minus .3ex}{2ex plus .2ex}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{0.8em}{}
+\titlespacing*{\subsection}{0pt}{3ex plus 1ex minus .3ex}{1.5ex plus .2ex}
+
+% Índice: temas y secciones
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+
+% ------------------------------------------------------------
+%  5. Entornos base: Enunciado, Resolución, Nota
+%     (sin colores ni recuadros; se distinguen por la tipografía)
+%     Uso:  \begin{enunciado} ... \end{enunciado}
+%           \begin{resolucion} ... \end{resolucion}   (sin tilde en el código)
+%           \begin{nota}       ... \end{nota}
+% ------------------------------------------------------------
+\usepackage{amsthm}
+
+\newtheoremstyle{enunciado}
+  {1.5ex plus .5ex minus .3ex}{1.5ex plus .5ex minus .3ex}
+  {\normalfont}{0pt}{\bfseries}{.}{0.6em}{}
+
+\newtheoremstyle{resolucion}
+  {1.5ex plus .5ex minus .3ex}{1.5ex plus .5ex minus .3ex}
+  {\normalfont}{0pt}{\itshape}{.}{0.6em}{}
+
+\newtheoremstyle{nota}
+  {1.5ex plus .5ex minus .3ex}{1.5ex plus .5ex minus .3ex}
+  {\normalfont\small}{0pt}{\scshape}{.}{0.6em}{}
+
+\theoremstyle{enunciado}\newtheorem*{enunciado}{Enunciado}
+\theoremstyle{resolucion}\newtheorem*{resolucion}{Resolución}
+\theoremstyle{nota}\newtheorem*{nota}{Nota}
+
+
+% ------------------------------------------------------------
+%  6. Listas, figuras y enlaces
+% ------------------------------------------------------------
+\usepackage{enumitem}
+\setlist{itemsep=0.3ex,topsep=0.8ex,parsep=0pt}
+\setlist[enumerate,1]{label=(\alph*),leftmargin=2em}
+
+\usepackage{graphicx}
+\graphicspath{{imagenes/}}         % Cada tema ajusta esta ruta (ver temas/tema1.tex)
+\usepackage[font=small,labelfont=bf,labelsep=period]{caption}
+
+\usepackage[hidelinks]{hyperref}   % Enlaces internos sin colores ni recuadros
+
+
+% ------------------------------------------------------------
+%  7. Macros de notación (Mecánica Cuántica)
+% ------------------------------------------------------------
+\newcommand{\ii}{\mathrm{i}}                 % unidad imaginaria
+\newcommand{\ee}{\mathrm{e}}                 % número e
+\newcommand{\dd}{\mathrm{d}}                 % diferencial
+\newcommand{\vect}[1]{\bm{#1}}               % vectores en negrita
+\newcommand{\dv}[2]{\frac{\dd #1}{\dd #2}}   % derivada
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\sgn}{sgn}
+
+% Delimitadores: \ket{\psi}, \bra{\psi}, y versiones con tamaño automático \ket*{\psi}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\bra}{\langle}{\rvert}
+\DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
+\DeclarePairedDelimiterX{\braket}[2]{\langle}{\rangle}{#1\,\delimsize\vert\,#2}
+\DeclarePairedDelimiterX{\mel}[3]{\langle}{\rangle}{#1\,\delimsize\vert\,#2\,\delimsize\vert\,#3}
+\DeclarePairedDelimiterX{\ev}[1]{\langle}{\rangle}{#1}     % valor esperado
+\DeclarePairedDelimiterX{\comm}[2]{[}{]}{#1,#2}            % conmutador
+\DeclarePairedDelimiterX{\acomm}[2]{\{}{\}}{#1,#2}         % anticonmutador
+
+
+% ------------------------------------------------------------
+%  8. Portada (usa \title, \author y \date definidos en main.tex)
+% ------------------------------------------------------------
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \setcounter{page}{1}%   La portada cuenta como página 1 (derecha)
+    \centering
+    \vspace*{2cm}
+    {\Huge\bfseries\@title\par}
+    \vspace{1.5cm}
+    \includegraphics[width=0.75\textwidth,height=0.4\textheight,keepaspectratio]%
+      {imagenes/portada.png}\par
+    \vfill
+    {\Large\@author\par}
+    \vspace{0.5cm}
+    {\large\@date\par}
+    \vspace*{1cm}
+  \end{titlepage}%
+}
+\makeatother

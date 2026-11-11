@@ -1,0 +1,38 @@
+% ============================================================
+%  main.tex
+%  Solucionario de Mecánica Cuántica (Sakurai)
+%
+%  Estructura del proyecto:
+%    main.tex
+%    preamble.tex
+%    temas/       tema1.tex, tema2.tex, ...
+%    imagenes/    portada.png
+%                 tema1/, tema2/, ...   (figuras de cada tema)
+% ============================================================
+\documentclass[11pt,a4paper,twoside,openright]{book}
+
+\input{preamble}
+
+% Para compilar solo un tema (más rápido), descomenta la línea siguiente:
+% \includeonly{temas/tema1}
+
+% ------------------------ Datos de la portada ------------------------
+\title{Solucionario\\[1.5ex]
+       \Large Mecánica cuántica moderna\\[0.5ex]
+       \large J.\,J. Sakurai}
+\author{Jesús Parejo Pineda}
+\date{\today}
+% ---------------------------------------------------------------------
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+\include{temas/tema1}
+% \include{temas/tema2}
+% \include{temas/tema3}
+
+\end{document}
